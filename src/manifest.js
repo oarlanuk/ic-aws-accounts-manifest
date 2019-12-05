@@ -54,14 +54,16 @@ const manifestJson = () => {
       config.roles.forEach(role => {
         json.push({
           allowedMemberTypes: ["User"],
-          displayName: `${config.departmentShortName}-${team.shortName}-${
+          description: `AWS-${config.departmentShortName}-${team.shortName}-${
+            account.name
+          }-${role}`,
+          displayName: `AWS-${config.departmentShortName}-${team.shortName}-${
             account.name
           }-${role}`,
           id: "fake-role-id",
           isEnabled: true,
-          description: `${config.department}-${team.shortName}-${
-            account.name
-          }-${role}`,
+          lang: null,
+          origin: "Application",
           value: `arn:aws:iam::${account.id}:role/${role},arn:aws:iam::${
             account.id
           }:saml-provider/AzureAD`

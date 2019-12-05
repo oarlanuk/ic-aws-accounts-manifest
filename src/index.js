@@ -9,6 +9,10 @@ function App() {
     return "fake-role-id-" + Math.floor(Math.random() * 100 + 1);
   };
 
+  const adGroupName = (accountName, ) => {
+
+  }
+
   return (
     <div className="App">
       <h1>{config.departmentDescription} AWS Accounts</h1>
@@ -19,23 +23,18 @@ function App() {
       <table>
         <thead>
           <tr key="header">
-            <td>AD Group Name</td>
-            <td>App Role Id</td>
             <td>AWS Account Id</td>
+            <td>AD Group Name</td>            
             <td>AWS IAM Role</td>
           </tr>
         </thead>
         <tbody>
           {config.teams.map(team =>
             team.accounts.map(account =>
-              config.roles.map(role => (
+              config.roles.map(role => (                
                 <tr>
-                  <td>
-                    {config.departmentShortName}-{team.shortName}-{account.name}
-                    -{role}
-                  </td>
-                  <td>{fakeAppRoleId()}</td>
                   <td>{account.id}</td>
+                  <td>AWS-{config.departmentShortName}-{team.shortName}{account.name !== undefined ? "-" + account.name : ''}-{role}</td>                  
                   <td>{role}</td>
                 </tr>
               ))
@@ -45,13 +44,9 @@ function App() {
       </table>
       <section>
         <h2>Manifest</h2>
-        <textarea
-          readOnly
-          id="manifestTextArea"
-          cols="80"
-          rows="10"
-          value={JSON.stringify(manifestJson(), null, 2)}
-        />
+        <div>
+          <pre>{JSON.stringify(manifestJson(), null, 2)}</pre>
+        </div>
       </section>
     </div>
   );
