@@ -5,13 +5,9 @@ import "./styles.css";
 import manifestJson from "./manifest";
 
 function App() {
-  const fakeAppRoleId = () => {
-    return "fake-role-id-" + Math.floor(Math.random() * 100 + 1);
-  };
-
-  const adGroupName = (accountName, ) => {
-
-  }
+  // const fakeAppRoleId = () => {
+  //   return "fake-role-id-" + Math.floor(Math.random() * 100 + 1);
+  // };
 
   return (
     <div className="App">
@@ -24,17 +20,21 @@ function App() {
         <thead>
           <tr key="header">
             <td>AWS Account Id</td>
-            <td>AD Group Name</td>            
+            <td>AD Group Name</td>
             <td>AWS IAM Role</td>
           </tr>
         </thead>
         <tbody>
           {config.teams.map(team =>
             team.accounts.map(account =>
-              config.roles.map(role => (                
+              config.roles.map(role => (
                 <tr>
                   <td>{account.id}</td>
-                  <td>AWS-{config.departmentShortName}-{team.shortName}{account.name !== undefined ? "-" + account.name : ''}-{role}</td>                  
+                  <td>
+                    AWS-{config.departmentShortName}-{team.shortName}
+                    {account.name !== undefined ? "-" + account.name : ""}-
+                    {role}
+                  </td>
                   <td>{role}</td>
                 </tr>
               ))

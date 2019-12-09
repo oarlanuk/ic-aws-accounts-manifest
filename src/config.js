@@ -2,7 +2,7 @@ const config = {
   department: "InnovationCentre",
   departmentDescription: "Innovation Centre",
   departmentShortName: "IC",
-  roles: ["Admin", "IaasContributor", "PaasContributor", "ReadOnly"],
+  roles: ["Admin", "Operator", "ReadOnly"],
   teams: [
     {
       name: "ProductServices",

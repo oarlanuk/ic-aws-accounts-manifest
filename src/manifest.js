@@ -52,14 +52,15 @@ const manifestJson = () => {
   config.teams.forEach(team => {
     team.accounts.forEach(account => {
       config.roles.forEach(role => {
+        const accountName =
+          account.name !== undefined ? "-" + account.name : "";
+        const displayName = `AWS-${config.departmentShortName}-${
+          team.shortName
+        }${accountName}-${role}`;
         json.push({
           allowedMemberTypes: ["User"],
-          description: `AWS-${config.departmentShortName}-${team.shortName}-${
-            account.name
-          }-${role}`,
-          displayName: `AWS-${config.departmentShortName}-${team.shortName}-${
-            account.name
-          }-${role}`,
+          description: displayName,
+          displayName: displayName,
           id: "fake-role-id",
           isEnabled: true,
           lang: null,
